@@ -5,14 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetService {
-  private url = "https://finnhub.io/api/v1/search?q=apple&token=c0mtnhf48v6tkq13l9bg";
-  results:any = [];
+  // results:any = [];
+  query:string = '';
+  private url:string = 'https://finnhub.io/api/v1/search?q=';
+  private key:string = '&token=c0mtnhf48v6tkq13l9bg';
 
   constructor(private httpClient: HttpClient) { }
 
-  getPosts(){
-    this.httpClient.get(this.url).subscribe(data => {this.results = data});
-    return this.results;
-    // return "service works"
+  getPosts(search:string){
+    this.query = search;
+    console.log(this.url+this.query+this.key);
+    return this.httpClient.get(this.url+this.query+this.key);
   }
 }

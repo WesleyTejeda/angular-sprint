@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { GetService } from './services/get.service';
 
 @Component({
@@ -9,10 +8,14 @@ import { GetService } from './services/get.service';
 })
 export class AppComponent {
   title = 'angular-sprint';
-  private url = "https://finnhub.io/api/v1/search?q=apple&token=c0mtnhf48v6tkq13l9bg"
+  symbol:string = '';
+  // private url = `https://finnhub.io/api/v1/search?q=${this.symbol}&token=c0mtnhf48v6tkq13l9bg`;
 
   constructor(private getService: GetService){}
   getData(){
-    console.log(this.getService.getPosts());
+    console.log(this.symbol);
+    console.log(this.getService.getPosts(this.symbol).subscribe(data => {
+      console.log(data);
+    }));
   }
 }

@@ -6,7 +6,6 @@
       <!-- Logo -->
         <div id="logo">
           <h1><a href="index.html">{{title}}</a></h1>
-          <p>{{getData()}}</p>
         </div>
 
       <!-- Nav -->
@@ -44,7 +43,9 @@
     <section id="intro" class="wrapper style1">
       <div class="title">The Introduction</div>
       <div class="container">
-        <p class="style1">So in case you were wondering what this is all about ...</p>
+        <p>Input stock symbol below</p>
+        <input [(ngModel)]="symbol" />
+        <button (click)="getData()">Search</button>
         <p class="style2">
           Escape Velocity is a free responsive<br class="mobile-hide" />
           site template by <a href="http://html5up.net" class="nobr">HTML5 UP</a>
