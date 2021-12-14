@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetService } from '../services/get.service';
+import { TopNewsData } from '../top-news-data.model';
 
 @Component({
   selector: 'app-top-news',
@@ -7,7 +8,7 @@ import { GetService } from '../services/get.service';
   styleUrls: ['./top-news.component.css']
 })
 export class TopNewsComponent implements OnInit {
-  news:any = [{}];
+  news:TopNewsData[] = [];
 
   constructor(private getService: GetService) { }
 
@@ -16,7 +17,7 @@ export class TopNewsComponent implements OnInit {
   }
 
   getNews(){
-    this.getService.getNews().subscribe(data => {
+    this.getService.getNews().subscribe((data:any) => {
       this.news = data;
       this.news.forEach((listing:any) => {
         if(listing.datetime){

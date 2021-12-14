@@ -9,9 +9,13 @@
 
   <!-- Intro -->
     <section id="intro" class="wrapper style1">
-      <div class="container">
+      <h3 class="mb-2">Search for a company by name</h3>
+      <input class="mb-2" style="min-width: 25%;" [(ngModel)]="symbol" />
+      <br>
+      <button (click)="getData()" class="btn btn-primary">Search</button>
+      <div class="container" style="width: 25%;" *ngFor="let companyProfile of companyProfiles">
         <div class="card text-white bg-secondary mb-3 mt-3">
-          <h5 class="card-header">Company Info</h5>
+          <h5 class="card-header bg-primary .bg-lighten-xl">Company Info</h5>
           <div class="card-body text-left">
             <h5 class="card-title">{{ companyProfile.name }}</h5>
             <img src="{{companyProfile.logo}}" style="max-width: 40px; max-height: 40px;" />
@@ -21,8 +25,6 @@
             <h6>Exchange: {{ companyProfile.exchange }}</h6>
             <h6>Currency: {{ companyProfile.currency }}</h6>
             <p>Input company name below</p>
-            <input [(ngModel)]="symbol" list="suggested" />
-            <button (click)="getData()" class="btn btn-primary">Search</button>
           </div>
         </div>
       </div>
@@ -31,9 +33,13 @@
   <!-- Main -->
     <section id="main" class="wrapper style2">
       <div class="title">
+        <i class="fas fa-caret-square-up"></i>
         <a routerLink="/top-news" routerLinkActive="active">Company Profile</a>
         <br>
-        <a routerLink="/top-news" routerLinkActive="active">Top News</a>
+        --------------------------
+        <br>
+        <i class="fas fa-caret-square-down"></i>
+        <a routerLink="/top-news" routerLinkActive="active">Top News Today</a>
       </div>
       <div class="container">
         <!-- News -->

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class GetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPosts(search:string){
+  getPosts(search:string):Observable<any>{
     this.query = search;
     console.log(this.url+this.query+this.key);
     return this.httpClient.get(this.url+this.query+this.key);
@@ -29,7 +30,7 @@ export class GetService {
   //   return this.httpClient.get(this.symbolUrl);
   // }
 
-  getCompany(companySymbol:string){
+  getCompany(companySymbol:string):Observable<any> {
     return this.httpClient.get(this.companyUrl+companySymbol+this.key);
   }
 }
