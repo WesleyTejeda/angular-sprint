@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
+import { TopNewsComponent } from './top-news/top-news.component';
 import { GetService } from './services/get.service';
 import { OnInit } from '@angular/core';
 import { query } from '@angular/animations';
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   // reducedBank:any = [];
   // suggested:any = [];
   result:any = [];
-  news:any = [{}];
+  // news:any = [{}];
   companyProfile:any = {
     country: "",
     currency: "",
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
       //   this.symbolBank = data;
       //   console.log(this.symbolBank);
       // })
-      this.getNews();
+      // this.getNews();
   }
 
   constructor(private getService: GetService){}
@@ -74,22 +75,22 @@ export class AppComponent implements OnInit {
   //   });
   // }
 
-  getNews(){
-    this.getService.getNews().subscribe(data => {
-      this.news = data;
-      this.news.forEach((listing:any) => {
-        if(listing.datetime){
-          listing.datetime = this.convertUnix(listing.datetime);
-        }
-      });
-      console.log(this.news);
-    })
-  }
+  // getNews(){
+  //   this.getService.getNews().subscribe(data => {
+  //     this.news = data;
+  //     this.news.forEach((listing:any) => {
+  //       if(listing.datetime){
+  //         listing.datetime = this.convertUnix(listing.datetime);
+  //       }
+  //     });
+  //     console.log(this.news);
+  //   })
+  // }
 
-  convertUnix(unixStamp:number){
-    let time = new Date(unixStamp * 1000);
-    return time.toLocaleString();
-  }
+  // convertUnix(unixStamp:number){
+  //   let time = new Date(unixStamp * 1000);
+  //   return time.toLocaleString();
+  // }
 
   getCompanyInfo(companySymbol:string){
     if(query.length != 0){
